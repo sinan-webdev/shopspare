@@ -16,7 +16,6 @@ function Orders() {
       }
       let {data} = await axios.get(`${backendUrl}/api/v1/order/user-orders`,{headers:{Authorization:`Bearer ${token}`}})
       if(data.success){
-        console.log(data,'data');
         
         let allOrderItem = []
         data.message.map((cur)=>{
@@ -28,7 +27,6 @@ function Orders() {
             allOrderItem.push(item)
           })
         })
-        console.log(allOrderItem,'__')
         setAllOrders(allOrderItem.reverse())
 
       }else{
@@ -39,7 +37,6 @@ function Orders() {
     }
   }
   useEffect(()=>{ordersData()},[token])
-  console.log(allOrders);
   
   return (
     <div className='border-t pt-16'>

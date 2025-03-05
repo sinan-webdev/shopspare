@@ -2,7 +2,6 @@ import React from 'react'
 import { assets } from '../assets/assets'
 
 function Navbar({setToken}) {
-  console.log('second time__________-')
   return (
     <div className='flex items-center py-2 justify-between px-8'>
       <h1>Logo</h1>

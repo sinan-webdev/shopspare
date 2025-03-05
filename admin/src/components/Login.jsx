@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
     e.preventDefault();
     try {
       let {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/admin/signin`,{email,password})
-      console.log(data);
       if(data.success){
         setToken(data.message)
         toast.success('login successfull')

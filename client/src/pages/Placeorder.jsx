@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 
 function Placeorder() {
   let {cartItems,setCartItem,backendUrl,token,delivary_fee,getCartAmount,products,getUserCart} = useContext(ContextComp)
-  console.log('_________________________carr',cartItems);
   useEffect(()=>{getCartAmount()},[])
   let [method,setMethod] = useState('cod')
   let navigate = useNavigate();
@@ -41,7 +40,6 @@ function Placeorder() {
      order_id:order.id,
      receipt:order.receipt,
      handler:async (response) => {
-      console.log(response);
       try {
         let {data} = await axios.post(`${backendUrl}/api/v1/order/verifyrazorpay`,response,{headers:{Authorization:`Bearer ${token}`}})
         if(data.success){
@@ -65,7 +63,6 @@ function Placeorder() {
           if(cartItems[cur][i]>0){
             // filtering in to cart item bcz it has to show that particular item 
             const itemInfo = structuredClone(products.find(j=>j._id===cur))
-            console.log('structuredClone',itemInfo);
             
             if(itemInfo){
               itemInfo.size = i
@@ -101,7 +98,6 @@ function Placeorder() {
           initPay(responseRazorpay.data.order);
           
         }else{
-          console.log(data.message);
           toast.error(data.message)
         }
         break;

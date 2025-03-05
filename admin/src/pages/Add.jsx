@@ -3,7 +3,6 @@ import { assets } from "../assets/assets.js";
 import axios from "axios"
 import { toast } from "react-toastify";
 function Add({token}) {
-  console.log(token)
   let [image1, setImage1] = useState("");
   let [image2, setImage2] = useState("");
   let [image3, setImage3] = useState("");

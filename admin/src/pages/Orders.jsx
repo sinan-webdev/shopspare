@@ -7,7 +7,6 @@ import { toast } from "react-toastify"
 import { assets } from '../assets/assets'
 
 function Orders({ token }) {
-  console.log(token);
 
   let [allOrdersData, setAllOrdersData] = useState([])
   const fetchAllOrders = async () => {

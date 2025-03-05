@@ -10,7 +10,6 @@ export const addProduct = async (req, res) => {
     let image2 = req.files.image2 && req.files.image2[0]
     let image3 = req.files.image3 && req.files.image3[0];
     let image4 = req.files.image4 && req.files.image4[0];
-    console.log(name, description, category, subCategory, sizes, bestseller);
     let images = [image1,image2,image3,image4].filter((cur)=>cur!==undefined)
     // uploading into cloudinary
     let imageUrl = await Promise.all(
@@ -33,7 +32,6 @@ export const addProduct = async (req, res) => {
       date:Date.now()
     }
     let response = await productModel.create(productData);
-    console.log(response)
     if(response){
       return  res.json({
             success:true,

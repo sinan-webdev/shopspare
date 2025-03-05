@@ -14,7 +14,7 @@ function Login() {
   async function handleSubmit(e){
     e.preventDefault();
     try {
-      let {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/${currentState==='Signup'?'register':'login'}`,{name,email,password})
+      let {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/${currentState==='Login'?'login':'register'}`,{name,email,password})
     if(data.success){
       setToken(data.message)
       localStorage.setItem('token',data.message)
@@ -31,21 +31,22 @@ function Login() {
       navigate("/")
     }
   },[token])
+  
   return (
     <form onSubmit={(e)=>handleSubmit(e)} className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-600">
       <div>
         <p className="text-3xl font-parata">{currentState}</p>
       </div>
-      {currentState === "Signup" ? (
-        <input
-          type="text"
-          required
-          className="w-full px-3 border py-2 border-gray-700"
-          placeholder="Name"
-          onChange={(e)=>setName(e.target.value)}
-          value={name}
-        />
-      ) : null}
+      {currentState === "Login" ? (
+        null
+      ) : (<input
+        type="text"
+        required
+        className="w-full px-3 border py-2 border-gray-700"
+        placeholder="Name"
+        onChange={(e)=>setName(e.target.value)}
+        value={name}
+      />)}
       <input
         type="email"
         required

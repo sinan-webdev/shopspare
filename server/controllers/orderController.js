@@ -13,7 +13,6 @@ const razorpayinstance  = new Razorpay({
 export async function placeOrderCod(req, res) {
     try {
         let { userId, items, amount, address } = req.body;
-        console.log(req.body)
         const orderData = {
             userId, items, amount, address, paymentMethod: 'COD', payment: false, date: Date.now()
         }
@@ -52,13 +51,11 @@ export async function placeOrderRazorpay(req, res) {
         }
         await razorpayinstance.orders.create(options,(error,order)=>{
             if(error){
-                console.log(error);
                 return res.json({success:false,message:error})      
             }
             res.json({success:true,order})
         })
     } catch (error) {
-        console.log(error);
         res.json({success:false,message:error.message})
     }
 }
@@ -67,7 +64,6 @@ export const verifyRazorpay = async(req,res)=>{
 try {
     const {userId,razorpay_order_id} = req.body
     let orderInfo = await razorpayinstance.orders.fetch(razorpay_order_id)
-    console.log(orderInfo);
     if(orderInfo.status==='paid'){
         await orderModel.findByIdAndUpdate(orderInfo.receipt,{payment:true})
         await userModel.findByIdAndUpdate(userId,{cartData:{}})
@@ -84,7 +80,6 @@ try {
 export async function allOrders(req, res) {
     try {
         let orders = await orderModel.find({})
-        console.log(orders);
         
         if (orders) {
             res.json({

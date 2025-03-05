@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 // import { products } from "../assets/assets";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import axios from "axios"
 export const ContextComp = createContext();
 
@@ -15,8 +14,12 @@ export const ProviderComp = ({ children }) => {
     let [cartItems, setCartItems] = useState({});
     let [products,setProducts] = useState([])
     let [token,setToken] = useState(localStorage.getItem('token'))
-
+  
   let addToCart = async (itemId, sizes) => {
+    
+    if(!token){
+      return toast.error('Please login')
+    }
     if (!sizes) {
       return toast.error("please select size");
     }
@@ -106,7 +109,6 @@ export const ProviderComp = ({ children }) => {
         setProducts(data.message)
       }
     } catch (error) {
-      console.log(error.message)
     }
   }
   async function removeItem(itemId,sizes) {

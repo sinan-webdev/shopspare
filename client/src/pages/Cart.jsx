@@ -24,7 +24,6 @@ function Cart() {
     }
     setCartData(tempData);
   }, [cartItems]);
-  console.log("__________----------",cartData);
   
   return (
     <div className="border-t pt-14">

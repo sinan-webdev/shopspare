@@ -49,7 +49,6 @@ export const loginUser = async (req, res) => {
             })
         }
         let searchData = await userModel.findOne({email})
-        console.log(searchData)
         if(searchData){
             return res.json({
                 success:false,
