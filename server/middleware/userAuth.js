@@ -8,7 +8,7 @@ export const userAuth = async (req,res,next)=>{
     console.log(token)
     if(!token){
         return res.status(401).json({
-            message:'No token provided'
+            message:'Please login'
         })
     }
     try{
@@ -16,14 +16,14 @@ export const userAuth = async (req,res,next)=>{
         const user = await userModel.findOne({_id:decoded.id})
         if(!user){
             return res.status(401).json({
-                message:'Invalid token'
+                message:'Please login'
             })
         }
         req.body.userId = user._id
         next()
     }catch(err){
         return res.status(401).json({
-            message:'Invalid token'
+            message:err.message
         })
     }
 }   

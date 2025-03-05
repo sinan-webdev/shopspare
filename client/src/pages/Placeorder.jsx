@@ -102,7 +102,7 @@ function Placeorder() {
           
         }else{
           console.log(data.message);
-          
+          toast.error(data.message)
         }
         break;
         default:
