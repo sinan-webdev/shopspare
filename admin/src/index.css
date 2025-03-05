@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+.active{
+    background-color: #ffebf5;
+    border-color: #C586A5;
+}
+
+@font-face {
+    font-family: Outfit;
+    src: url(fonts/Outfit/Outfit-VariableFont_wght.ttf);
+}
+@theme{
+    --font-outfit:Outfit,'sans-serif'
+}
+body{
+    font-family: "Outfit";
+}
+input,select,textarea{
+    border: 1px solid black;
+    outline: pink;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}

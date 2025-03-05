@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@font-face{
+    font-family: Parata;
+    src: url("../src/fonts/Prata/Prata-Regular.ttf");
+}
+@font-face{
+    font-family: Outfit;
+    src: url("../src/fonts/Outfit/Outfit-VariableFont_wght.ttf");
+}
+
+
+
+@theme{
+    --font-parata:Parata,'sans-serif',
+    --font-outfit:Outfit,'sans-serif'
+}
+::-webkit-scrollbar{
+    display: none;
+}
+body{
+    font-family: "Outfit";
+}
